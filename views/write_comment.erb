@@ -1,0 +1,12 @@
+﻿<html>
+	<form action="/post/comment/new" method="post">
+		<div>
+			내용<br>
+			<textarea name="body"></textarea>
+		</div>
+		<div>
+			<input type="hidden" name="post_id" value=<%=params[:post_id]%> />
+			<input type="submit" value="댓글쓰기" />
+		</div>
+	</form>
+</html>

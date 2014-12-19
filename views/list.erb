@@ -1,0 +1,30 @@
+﻿<html>
+	<form action="/write_post">
+		<input type="hidden" name="account_id" value=<%=params[:account_id]%> />
+		<input type="submit" value="글쓰기" />
+	</form>
+
+	<% @posts.each do |post| %>
+	<div>
+		<h1><%= post.title %> - <%= post.likes.count %> like(s)</h1>
+		<h5><%= post.created_at %><h5>
+		<p><%= post.body %></p>
+
+		<% post.comments.each do |comment| %>
+			<p>└── <%= comment.body %>	</p>
+		<% end %>
+
+		<form action='/write_comment' method="post">
+			<input type="hidden" name="account_id" value=<%=params[:account_id]%> />
+			<input type="hidden" name="post_id" value=<%=post.id%> />
+			<input type="submit" value="댓글 작성" />
+		</form>
+		<form action='/post/like' method="post">
+			<input type="hidden" name="account_id" value=<%=params[:account_id]%> />
+			<input type="hidden" name="post_id" value=<%=post.id%> />
+			<input type="submit" value="좋아요" />
+		</form>
+		<hr>
+	</div>
+	<% end %>
+</html>
