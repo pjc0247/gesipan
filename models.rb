@@ -18,7 +18,7 @@ class Account
   validates_length_of :user_pw, :max => 32
   validates_length_of :nickname, :max => 16
 
-#  has n, :posts
+  has n, :posts
   has n, :comments
 end
 
@@ -30,7 +30,7 @@ class Post
   property :body, Text, :required => true
   property :created_at, DateTime
 
-#  belongs_to :user
+  belongs_to :account
   has n, :comments
   has n, :likes
 end

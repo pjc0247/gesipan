@@ -28,7 +28,7 @@ end
 post '/account/new' do
   account = Account.create params
   
-  redirect '/list'
+  redirect '/list?account_id=' + account.id.to_s
 end
 
 post '/post/like' do 
